@@ -11,6 +11,11 @@
 #future improvements: automate getting the php version and the apache iteration
 #Also make a web interface to update this values
 
+#To search in the nano editor use ctrl + w
+#max_input_time 300
+# restart apache 
+#sudo /etc/init.d/apache2 restart
+
 phpIni=/etc/php/7.2/apache2/php.ini
 
 if [ -e $phpIni ]
@@ -18,12 +23,12 @@ then
     echo 'Copies php.ini to current directory and creates a backup file'
     echo 'Modifies it and then displays variance for confirmation.'
     cp $phpIni php.ini.orig
-    echo 'Setting max execution time to 600 seconds '
-    sed -i 's/max_execution_time =.*/max_execution_time = 600/' phpIni
-    echo 'Setting memory limit to 128M'
-    sed -i 's/memory_limit =.*/memory_limit = 128M/' phpIni
-    echo 'Setting post max size to 2048M'
-    sed -i 's/post_max_size =.*/post_max_size = 2048M/' phpIni
+    echo 'Setting max execution time to 300 seconds '
+    sed -i 's/max_execution_time =.*/max_execution_time = 300/' phpIni
+    echo 'Setting memory limit to 256M'
+    sed -i 's/memory_limit =.*/memory_limit = 256M/' phpIni
+    echo 'Setting post max size to 500M'
+    sed -i 's/post_max_size =.*/post_max_size = 500M/' phpIni
     echo 'Setting max upload filesize to 1024M'
     sed -i 's/upload_max_filesize =.*/upload_max_filesize = 1024M/' phpIni
     echo 'php.ini adjusted!'
